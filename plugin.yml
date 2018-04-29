@@ -1,0 +1,19 @@
+name: Ruby Matrix
+description: Runs step commands in docker againts different ruby versions
+author: https://github.com/dunkelbraun
+requirements:
+  - docker
+requirements:
+configuration:
+  properties:
+    rubies:
+      type: [ string, array ]
+      minimum: 1
+    debug:
+      type: boolean
+    buildkite-agent:
+      type: boolean
+  oneOf:
+      - required:
+        - rubies
+  additionalProperties: false
