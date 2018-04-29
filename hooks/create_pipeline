@@ -15,7 +15,7 @@ IFS=$CURRENT_IFS
 
 echo "steps:"
 for ruby_version in ${ruby_versions[@]}; do
-  echo "  - name: :ruby: $ruby_version" 
+  echo "  - name: \":ruby: $ruby_version\"" 
   echo "    command:"
 
   for (( i=0; i<${#buildkite_commands[@]}; i++ )); do
