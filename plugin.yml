@@ -13,7 +13,5 @@ configuration:
       type: boolean
     buildkite-agent:
       type: boolean
-  oneOf:
-      - required:
-        - rubies
-  additionalProperties: false
+  required:
+    - rubies
