@@ -3,7 +3,7 @@ set -eu
 
 ruby_versions=()
 while IFS='=' read -r name _ ; do
-  if [[ $name =~ ^(BUILDKITE_PLUGIN_RUBY_RUBIES_[0-9]+) ]] ; then
+  if [[ $name =~ ^(BUILDKITE_PLUGIN_RUBY_MATRIX_RUBIES_[0-9]+) ]] ; then
     ruby_versions+="${!name} "
   fi
 done < <(env | sort)
