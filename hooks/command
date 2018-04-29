@@ -3,5 +3,4 @@ set -ueo pipefail
 
 DIR="$(cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd)"
 
-$DIR/create_pipeline
-# | buildkite-agent pipeline upload
+$DIR/create_pipeline | buildkite-agent pipeline upload
