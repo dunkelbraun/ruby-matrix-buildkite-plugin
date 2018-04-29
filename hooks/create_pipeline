@@ -14,25 +14,29 @@ buildkite_commands=($BUILDKITE_COMMAND)
 IFS=$CURRENT_IFS
 
 echo "steps:"
+
 for ruby_version in ${ruby_versions[@]}; do
   echo "  - name: \":ruby: $ruby_version\"" 
   echo "    command:"
 
   for (( i=0; i<${#buildkite_commands[@]}; i++ )); do
-  echo "      - ${buildkite_commands[$i]}"
+    echo "      - ${buildkite_commands[$i]}"
   done
+
   echo "    plugins:"
   echo "      docker#v1.1.1:"
   echo "        image: ruby:$ruby_version"
   echo "        workdir: /app"
+
   if [[ "${BUILDKITE_PLUGIN_RUBY_MATRIX_DEBUG:-false}" =~ (true|on|1) ]] ; then
-  echo "        debug: true"
+    echo "        debug: true"
   else
-  echo "        debug: false"
+    echo "        debug: false"
   fi
+  
   if [[ "${BUILDKITE_PLUGIN_RUBY_MATRIX_MOUNT_BUILDKITE_AGENT:-false}" =~ (true|on|1) ]] ; then
-  echo "        mount-buildkite-agent: true"
+    echo "        mount-buildkite-agent: true"
   else
-  echo "        mount-buildkite-agent: false"
+    echo "        mount-buildkite-agent: false"
   fi
 done
